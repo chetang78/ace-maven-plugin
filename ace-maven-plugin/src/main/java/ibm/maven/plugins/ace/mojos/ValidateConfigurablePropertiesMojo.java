@@ -475,8 +475,8 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         	
         }else if(osName.contains("linux")){
         	
-        	//executable = ". "+aceRunDir+"/mqsiprofile&&mqsireadbar";
-        	executable = ". "+aceRunDir+"/mqsireadbar";
+        	executable = ". "+aceRunDir+"/mqsiprofile&&mqsireadbar";
+        	//executable = ". "+aceRunDir+"/mqsireadbar";
         	
         }
         
