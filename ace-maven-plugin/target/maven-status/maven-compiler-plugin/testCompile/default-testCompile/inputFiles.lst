@@ -1,0 +1,3 @@
+/data/ace-maven-plugin/ace-maven-plugin/ace-maven-plugin/src/test/java/ibm/maven/plugins/ace/mojos/ValidateConfigurablePropertiesMojoUnitTest.java
+/data/ace-maven-plugin/ace-maven-plugin/ace-maven-plugin/src/test/java/ibm/maven/plugins/ace/mojos/CreateBarMojoUnitTest.java
+/data/ace-maven-plugin/ace-maven-plugin/ace-maven-plugin/src/test/java/ibm/maven/plugins/ace/utils/ConfigurablePropertiesUtilTest.java
