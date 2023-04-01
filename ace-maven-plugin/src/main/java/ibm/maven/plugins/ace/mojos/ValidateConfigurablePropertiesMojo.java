@@ -503,12 +503,12 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         }
         //}
 
-        //if (osName.contains("windows")){
+        if (osName.contains("windows")){
         	pb = new ProcessBuilder(cmdFile.getAbsolutePath());
-        //}else if (osName.contains("linux")){
-        //	pb = new ProcessBuilder();
-        //	pb.command("bash", "-c", getCommandLine(command));
-        //}
+        }else if (osName.contains("linux")){
+        	pb = new ProcessBuilder();
+        	pb.command("bash", "-c", getCommandLine(command));
+        }
 
         // redirect subprocess stderr to stdout
         pb.redirectErrorStream(true);
