@@ -24,6 +24,7 @@ public class ProcessOutputCatcher extends Thread {
             while (true) {
                 line = bufferedReader.readLine();
                 if (line != null) {
+                    System.out.println(line);
                     output.add(line);
                     line = null;
                 } else {
