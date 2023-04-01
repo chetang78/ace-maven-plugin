@@ -344,6 +344,8 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
 
                     getLog().error("Invalid properties found in " + file.getAbsolutePath());
                     invalidPropertiesFound = true;
+                    getLog().debug("D:  " + validProps.size());
+
                     for (String validProp : validProps) {
                             getLog().debug("D:  " + validProp);
                     }
@@ -486,7 +488,7 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         
         command.add(executable);
         command.addAll(params);
-        command.add(" > /tmp/cgreadbar.log");
+        //command.add(" > /tmp/cgreadbar.log");
        
 
         if (getLog().isDebugEnabled()) {
