@@ -467,8 +467,9 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
        
         List<String> command = new ArrayList<String>();
         
+       	cmdFile = new File(System.getProperty("java.io.tmpdir") + File.separator + "readbarCommand-" + UUID.randomUUID() + ".cmd");
         if (osName.contains("windows")){
-        	cmdFile = new File(System.getProperty("java.io.tmpdir") + File.separator + "readbarCommand-" + UUID.randomUUID() + ".cmd");
+        	//cmdFile = new File(System.getProperty("java.io.tmpdir") + File.separator + "readbarCommand-" + UUID.randomUUID() + ".cmd");
         	cmdFile.deleteOnExit();
         	executable = aceRunDir+"/mqsiprofile&&mqsireadbar";
         	
@@ -480,16 +481,17 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         
         command.add(executable);
         command.addAll(params);
+        command.add(" >cgreadbar.log");
        
 
         if (getLog().isDebugEnabled()) {
-        	if (osName.contains("windows")){
+        	//if (osName.contains("windows")){
             getLog().debug("executing command file: " + cmdFile.getAbsolutePath());
-        	}
+        	//}
             getLog().debug("executeMqsiReadBar command: " + getCommandLine(command));
         }
 
-        if (osName.contains("windows")){
+        //if (osName.contains("windows")){
         try {
             FileUtils.fileWrite(cmdFile, getCommandLine(command));
 
@@ -498,14 +500,14 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         } catch (IOException e1) {
             throw new MojoFailureException("Could not create command file: " + cmdFile.getAbsolutePath());
         }
-        }
+        //}
 
-        if (osName.contains("windows")){
+        //if (osName.contains("windows")){
         	pb = new ProcessBuilder(cmdFile.getAbsolutePath());
-        }else if (osName.contains("linux")){
-        	pb = new ProcessBuilder();
-        	pb.command("bash", "-c", getCommandLine(command));
-        }
+        //}else if (osName.contains("linux")){
+        //	pb = new ProcessBuilder();
+        //	pb.command("bash", "-c", getCommandLine(command));
+        //}
 
         // redirect subprocess stderr to stdout
         pb.redirectErrorStream(true);
