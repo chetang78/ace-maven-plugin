@@ -325,6 +325,7 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
     private void validatePropertiesFiles(List<String> validProps) throws MojoFailureException {
 
         boolean invalidPropertiesFound = false;
+        
 
         List<File> propFiles = null;
         try {
@@ -343,6 +344,9 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
 
                     getLog().error("Invalid properties found in " + file.getAbsolutePath());
                     invalidPropertiesFound = true;
+                    for (String validProp : validProps) {
+                            getLog().debug("D:  " + validProp);
+                    }
 
                     // list the invalid properties in this file
                     for (String definedProp : definedProps) {
