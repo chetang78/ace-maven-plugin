@@ -517,7 +517,7 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         try {
             pb.redirectErrorStream(true);
             process = pb.start();
-            stdOutHandler = new ProcessOutputLogger(process.getInputStream(), output);
+            stdOutHandler = new ProcessOutputCatcher(process.getInputStream(), output);
             stdOutHandler.start();
             process.waitFor();
 
