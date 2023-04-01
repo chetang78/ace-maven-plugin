@@ -475,13 +475,14 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         	
         }else if(osName.contains("linux")){
         	
-        	executable = ". "+aceRunDir+"/mqsiprofile&&mqsireadbar";
+        	//executable = ". "+aceRunDir+"/mqsiprofile&&mqsireadbar";
+        	executable = ". "+aceRunDir+"/mqsireadbar";
         	
         }
         
         command.add(executable);
         command.addAll(params);
-        command.add(" >cgreadbar.log");
+        command.add(" > /tmp/cgreadbar.log");
        
 
         if (getLog().isDebugEnabled()) {
