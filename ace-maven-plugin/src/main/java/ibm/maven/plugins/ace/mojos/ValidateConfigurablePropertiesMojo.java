@@ -375,18 +375,10 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         ProcessBuilder pb =null;
        
         List<String> command = new ArrayList<String>();
-      
-
-        cmdFile = new File(System.getProperty("java.io.tmpdir") + File.separator + "readbarCommand-" + UUID.randomUUID() + ".cmd");
-//	cmdFile.deleteOnExit();
-
-
-
-
-
+       
         if (osName.contains("windows")){
-       // 	cmdFile = new File(System.getProperty("java.io.tmpdir") + File.separator + "readbarCommand-" + UUID.randomUUID() + ".cmd");
-       // 	cmdFile.deleteOnExit();
+        	cmdFile = new File(System.getProperty("java.io.tmpdir") + File.separator + "readbarCommand-" + UUID.randomUUID() + ".cmd");
+        	cmdFile.deleteOnExit();
         	executable = aceRunDir+"/mqsiprofile&&mqsiapplybaroverride";
         	
         }else if(osName.contains("linux")){
@@ -398,16 +390,15 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
       
         command.add(executable);
         command.addAll(params);
-	command.add(" > cgreadbar.txt");
 
         if (getLog().isDebugEnabled()) {
-        	if (osName.contains("linux")){
+        	if (osName.contains("windows")){
             getLog().debug("executing command file: " + cmdFile.getAbsolutePath());
         	}
             getLog().debug("executeMqsiApplyBarOverride command: " + getCommandLine(command));
         }
 
-        if (osName.contains("linux")){
+        if (osName.contains("windows")){
             try {
                 FileUtils.fileWrite(cmdFile, getCommandLine(command));
 
@@ -418,9 +409,9 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
             }
             }
 
-        if (osName.contains("linux")){
+        if (osName.contains("windows")){
         	pb = new ProcessBuilder(cmdFile.getAbsolutePath());
-        }else if (osName.contains("linux1")){
+        }else if (osName.contains("linux")){
         	pb = new ProcessBuilder();
         	pb.command("bash", "-c", getCommandLine(command));
         }
@@ -483,7 +474,7 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         	
         }else if(osName.contains("linux")){
         	
-        	executable = ". "+aceRunDir+"/mqsireadbar " ;
+        	executable = ". "+aceRunDir+"/mqsiprofile&&mqsireadbar";
         	
         }
         
@@ -513,7 +504,7 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         	pb = new ProcessBuilder(cmdFile.getAbsolutePath());
         }else if (osName.contains("linux")){
         	pb = new ProcessBuilder();
-        	pb.command("bash", "-c", getCommandLine(command) +" > cg-readbar.log " );
+        	pb.command("bash", "-c", getCommandLine(command));
         }
 
         // redirect subprocess stderr to stdout
@@ -543,7 +534,7 @@ public class ValidateConfigurablePropertiesMojo extends AbstractMojo {
         }
 
         if (process.exitValue() != 0) {
-            //logOutputFile(outFile, "error");
+            // logOutputFile(outFile, "error");
             throw new MojoFailureException("mqsireadbar finished with exit code: " + process.exitValue());
         }
 
