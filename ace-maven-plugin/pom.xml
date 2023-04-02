@@ -416,5 +416,5 @@
                <url>git@github.com:chetanibm/ace-maven-plugin</url>
 		<connection>scm:git:git@github.com:chetanibm/ace-maven-plugin.git</connection>
 	</scm>
-	<version>11.36</version>
+	<version>11.37</version>
 </project>
