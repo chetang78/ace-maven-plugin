@@ -413,8 +413,8 @@
 
 	</distributionManagement>
 	<scm>
-                <url>git@github.com:chetanibm/ace-maven-plugin</url>
-		<connection>scm:git:git@github.com:chetanibm/ace-maven-plugin</connection>
+		<url>https://github.com/ace-maven-plugin</url>
+		<connection>scm:git:https://github.com/chetanibm/ace-maven-plugin.git</connection>
             <tag>ace-maven-plugin-11.34</tag>
 	</scm>
 	<version>11.34</version>
