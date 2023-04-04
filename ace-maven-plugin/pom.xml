@@ -413,6 +413,7 @@
 
 	</distributionManagement>
 	<scm>
+		<id>ace-project</id>
                <url>git@github.com:chetanibm/ace-maven-plugin</url>
 		<connection>scm:git:git@github.com:chetanibm/ace-maven-plugin.git</connection>
 	</scm>
