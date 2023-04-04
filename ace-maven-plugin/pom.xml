@@ -402,12 +402,12 @@
 		</dependencies>
 	</dependencyManagement>
 	<distributionManagement>
-		<!--~repository>
+		<repository>
 			<id>releases</id>
 			<name>Corporate Repository</name>
-			<url>http://9.30.180.133:8081/repository/releases/</url>
+			<url>http://169.38.85.9:8082/repository/releases/</url>
 			<layout>default</layout>
-		</repository-->
+		</repository>
 
 	</distributionManagement>
 	<scm>
